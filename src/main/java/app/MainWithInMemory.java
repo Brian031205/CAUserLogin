@@ -8,6 +8,7 @@ import javax.swing.WindowConstants;
 
 import data_access.DBUserDataAccessObject;
 import data_access.InMemoryUserDataAccessObject;
+import entity.CommonUser;
 import entity.CommonUserFactory;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.logged_in.LoggedInViewModel;
@@ -22,6 +23,8 @@ import view.ViewManager;
  * The version of Main with an external database used to persist user data.
  */
 public class MainWithInMemory {
+
+    private static CommonUser user;
 
     /**
      * The main method for starting the program with an external database used to persist user data.
@@ -73,5 +76,6 @@ public class MainWithInMemory {
 
         application.pack();
         application.setVisible(true);
+        userDataAccessObject.setCurrentUser(user.getName());
     }
 }
