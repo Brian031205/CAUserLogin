@@ -28,11 +28,11 @@ public class LoginInteractor implements LoginInputBoundary {
                 loginPresenter.prepareFailView("Incorrect password for \"" + username + "\".");
             }
             else {
+                userDataAccessObject.setCurrentUser(username);
 
                 final User user = userDataAccessObject.get(loginInputData.getUsername());
 
-                final LoginOutputData loginOutputData = new LoginOutputData(user.getName(), false);
-                loginPresenter.prepareSuccessView(loginOutputData);
+                loginPresenter.prepareSuccessView(new LoginOutputData(user.getName(), true));
             }
         }
     }
